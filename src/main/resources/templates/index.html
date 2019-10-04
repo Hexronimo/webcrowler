@@ -5,9 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p>Crawl it!</p>
-    <form action="#" th:action="@{/submit}" method="post">
+    <h1>Crawl it!</h1>
+    <form action="#" th:action="@{/}" method="post">
     <p>URL: <input type="text" name="url" /></p>
+    <button type="submit">Parse</button>
     </form>
+    <br>
+    <br>
+    <p th:text="${sitetitle}"></p>
+    <div th:text="${htmlbody}">
+    </div>
 </body>
 </html>

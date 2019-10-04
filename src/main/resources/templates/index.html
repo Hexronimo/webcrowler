@@ -7,13 +7,31 @@
 <body>
     <h1>Crawl it!</h1>
     <form action="#" th:action="@{/}" method="post">
-    <p>URL: <input type="text" name="url" /></p>
+    <p>Enter URL: <input type="text" name="url" /></p>
     <button type="submit">Parse</button>
     </form>
     <br>
     <br>
-    <p th:text="${sitetitle}"></p>
-    <div th:text="${htmlbody}">
-    </div>
+    <table>
+	    <tr>
+		    <td style="width:50%;">
+			    <p th:text="${htmltitle}"></p>
+			    <div th:text="${htmlbody}"></div>
+		    </td>
+		    <td style="width:50%;">
+				<table>
+				<tr>
+				<td>
+				<th:block th:each="link : ${links}">
+				<p th:text="link">
+				
+				</p>
+				</th:block>
+				</td>
+				</tr>
+				</table>
+		    </td>
+	    </tr>
+    </table>
 </body>
 </html>

@@ -3,3 +3,4 @@
 target
 .classpath
 src/test
+src/main/resources/static/

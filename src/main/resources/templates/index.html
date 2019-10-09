@@ -7,31 +7,51 @@
 <body>
     <h1>Crawl it!</h1>
     <form action="#" th:action="@{/}" method="post">
-    <p>Enter URL: <input type="text" name="url" /></p>
+    <table>
+    <tr>
+    <td>Enter URL: </td>
+    <td><input type="text" name="url" /></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td>Threads: </td>
+    <td><input type="text" name="workers" value="1"/></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td>Depth: </td>
+    <td><input type="text" name="depth" /></td>
+    <td><input type="checkbox" value="1" name="usedepth" /> Enable</td>
+    </tr>
+    <tr>
+    <td>Time limit: </td>
+    <td><input type="text" name="time" value="200" /></td>
+    <td><input type="checkbox" value="1" name="usetime" /> Enable</td>
+    </tr>
+    </table>
+
     <button type="submit">Parse</button>
     </form>
     <br>
     <br>
-    <table>
-	    <tr>
-		    <td style="width:50%;">
-			    <p th:text="${htmltitle}"></p>
-			    <div th:text="${htmlbody}"></div>
-		    </td>
-		    <td style="width:50%;">
-				<table>
-				<tr>
-				<td>
-				<th:block th:each="link : ${links}">
-				<p th:text="link">
-				
-				</p>
-				</th:block>
-				</td>
-				</tr>
-				</table>
-		    </td>
-	    </tr>
+    <div style="color: red;" th:text="${error}"></div>
+    <br>
+    <b th:text="${title}"></b>
+    <table border="1">
+    <thead>
+    <tr>
+    <td style="text-align:center;"><b>URL</b></td>
+	<td style="text-align:center;"><b>Title</b></td>
+    </tr>
+    </thead>
+		<th:block th:each="page : ${pages}">
+		<tr>
+			<td th:text="${page.getUrl().toString()}"></td>
+			<td th:text="${page.getTitle()}"></td>
+   		</tr>
+		</th:block>
     </table>
+    <br>
+    <a th:href="@{/download.txt}">Download list</a>
 </body>
 </html>
